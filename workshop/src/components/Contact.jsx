@@ -33,13 +33,13 @@ export default function App() {
       {/* Main Content */}
       <main className="flex-grow flex flex-col items-center justify-center text-white text-4xl md:text-5xl font-bold bg-cover bg-center bg-[url('/path-to-your-image.jpg')] p-4 text-center">
         <div className="bg-black bg-opacity-50 p-4 md:p-6 rounded-lg shadow-md animate-fade-in">
-          <h1>VroomBoom</h1>
+            <h1>Contact</h1>
           <p className="text-xl md:text-2xl mt-2">Boom your vroom.</p>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="py-8 bg-gray-900 text-gray-300 text-lg flex flex-col md:flex-row justify-evenly items-start gap-4 text-center md:text-left px-4">
+      <footer className="py-8 bg-gray-900 text-gray-300 text-lg flex flex-row flex-wrap md:flex-row justify-evenly items-start gap-4 text-center md:text-left px-4">
         <div className="text-2xl font-bold">VroomBoom</div>
         <div className="flex flex-col space-y-2">
           <h3>Quick Links</h3>
