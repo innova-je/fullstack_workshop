@@ -1,11 +1,26 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getDictionary } from "./LocalStorageHelper";
 import { Menu, X } from "lucide-react";
 import React from "react";
-import { motion } from 'framer-motion';
 
-export default function Contact() {
+export default function CarSpecific() {
+  const { carName } = useParams();
+  const [carData, setCarData] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const dictionary = getDictionary();
+    setCarData(dictionary[carName]); // Fetch car data using carName
+  }, [carName]);
+
+  if (!carData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-2xl font-semibold text-gray-700">
+        Car not found!
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen w-screen flex flex-col font-sans bg-gray-300">
@@ -36,20 +51,21 @@ export default function Contact() {
 
 
       <main className="flex-grow flex flex-col items-center justify-center bg-cover bg-center bg-[url('./assets/contact.webp')] opacity-80 p-4 text-center">
-        <div className="bg-white bg-opacity-80 p-6 md:p-8 rounded-2xl shadow-lg animate-fade-in max-w-xl">
-          <motion.h1 
-            initial={{ opacity: 0, y: -50 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold text-blue-600 mb-4"
-          >
-            VroomBoom
-          </motion.h1>
-          <p className="text-lg md:text-xl text-blue-500 mb-6">Boom your vroom.</p>
-          <div className="px-6 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg shadow-md">
-            Browse Cars
-          </div>
-        </div>
+      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gray-200 w-[350px] md:w-[650px]">
+      <div className="bg-white p-8 rounded-lg shadow-lg text-center max-w-[20rem] w-fit">
+  <h1 className="text-xl font-bold text-blue-600 mb-2">{carName}</h1>
+  <p className="text-xl font-semibold text-gray-700">Starting from ${carData.price}</p>
+  <div className="text-md text-gray-600 mt-2 max-h-[200px] overflow-auto px-2 break-words">
+    {carData.longDescription}
+  </div>
+  <Link to="/marketplace">
+    <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md">
+      Back to Marketplace
+    </button>
+  </Link>
+</div>
+
+    </div>
     </main>
 
 

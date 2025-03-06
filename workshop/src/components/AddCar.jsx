@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import React from "react";
-import { motion } from 'framer-motion';
+import CarMarketplaceForm from "./CarMarketplaceForm";
+ 
+export default function AddCar() {
 
-export default function Contact() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -35,22 +36,9 @@ export default function Contact() {
       {/* Main Content */}
 
 
-      <main className="flex-grow flex flex-col items-center justify-center bg-cover bg-center bg-[url('./assets/contact.webp')] opacity-80 p-4 text-center">
-        <div className="bg-white bg-opacity-80 p-6 md:p-8 rounded-2xl shadow-lg animate-fade-in max-w-xl">
-          <motion.h1 
-            initial={{ opacity: 0, y: -50 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold text-blue-600 mb-4"
-          >
-            VroomBoom
-          </motion.h1>
-          <p className="text-lg md:text-xl text-blue-500 mb-6">Boom your vroom.</p>
-          <div className="px-6 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg shadow-md">
-            Browse Cars
-          </div>
-        </div>
-    </main>
+      <main className="flex-grow flex flex-col items-center justify-center bg-cover bg-center bg-[url('./assets/about.webp')] opacity-80 p-4 text-center">
+        <CarMarketplaceForm/>
+      </main>
 
 
       {/* Footer */}
