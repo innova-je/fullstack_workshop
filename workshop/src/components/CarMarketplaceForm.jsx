@@ -89,31 +89,13 @@ const CarMarketplaceForm = () => {
                         required
                     ></textarea>
                 </div>
-
-                {/* Buttons for Adding and Removing */}
-                <div className="flex space-x-2">
-                    <button
-                        type="button"
-                        onClick={handleAdd}
-                        className="w-full bg-green-500 text-white py-2 rounded-md"
-                    >
-                        Add to Marketplace
-                    </button>
-            
-                </div>
-
-                <button
-                    type="submit"
-                    className="w-full bg-blue-500 text-white py-2 rounded-md"
-                >
-                    Submit
-                </button>
+                <button type="button" onClick={handleAdd} className="w-full text-gray-900 py-2 rounded-md">Add to Marketplace</button>
             </form>
 
             {/* Display Dictionary */}
             <div className="mt-4 p-4 bg-gray-700 text-white w-full rounded-md">
                 <h3 className="text-lg font-semibold">Stored Cars</h3>
-                <pre className="text-sm">{JSON.stringify(dictionary, null, 2)}</pre>
+                <pre className="text-sm text-start text-wrap">{JSON.stringify(dictionary, null, 2)}</pre>
             </div>
         </div>
     );

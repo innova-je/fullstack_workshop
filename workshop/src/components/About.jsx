@@ -10,8 +10,8 @@ export default function About() {
   return (
     <div className="min-h-screen w-screen flex flex-col font-sans bg-gray-300">
       {/* Header */}
-      <header className="flex items-center justify-between bg-gray-900 text-white py-4 px-6 md:px-8 shadow-lg relative">
-        <Link to="/" className="text-3xl md:text-4xl font-extrabold text-gray-300">VroomBoom</Link>
+      <header className="flex items-center justify-between bg-gray-900 text-white py-4 px-6 md:px-8 shadow-lg relative z-50">
+      <Link to="/" className="text-3xl md:text-4xl font-extrabold text-gray-300">VroomBoom</Link>
         
         {/* Hamburger Menu button */}
         <div
@@ -23,8 +23,9 @@ export default function About() {
 
         {/* Navbar Links */}
         <nav
-          className={`absolute md:static top-17 left-0 w-full md:w-auto bg-gray-800 md:bg-transparent flex flex-col md:flex-row items-center md:gap-6 text-lg font-extrabold transition-all duration-300 ease-in-out ${menuOpen ? "flex" : "hidden"} md:flex`}
-        >
+  className={`absolute md:static top-full py-4 left-0 w-full md:w-auto bg-gray-800 md:bg-transparent flex flex-col md:flex-row items-center md:gap-6 text-lg font-extrabold transition-all duration-300 ease-in-out z-50 ${menuOpen ? "flex" : "hidden"} md:flex`}
+>
+
           <Link to="/about">About</Link>
           <Link to="/marketplace">Marketplace</Link>
           <Link to="/testimonials">Testimonials</Link>
@@ -37,14 +38,7 @@ export default function About() {
 
       <main className="flex-grow flex flex-col items-center justify-center bg-cover bg-center bg-[url('./assets/about.webp')] opacity-80 p-4 text-center">
         <div className="bg-white bg-opacity-80 p-6 md:p-8 rounded-2xl shadow-lg animate-fade-in max-w-xl">
-          <motion.h1 
-            initial={{ opacity: 0, y: -50 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold text-blue-600 mb-4"
-          >
-            VroomBoom
-          </motion.h1>
+          <h2>VroomBoom</h2>
           <p className="text-lg md:text-xl text-blue-500 mb-6">Boom your vroom.</p>
           <div className="px-6 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg shadow-md">
             Browse Cars

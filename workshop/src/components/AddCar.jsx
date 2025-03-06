@@ -11,27 +11,28 @@ export default function AddCar() {
   return (
     <div className="min-h-screen w-screen flex flex-col font-sans bg-gray-300">
       {/* Header */}
-      <header className="flex items-center justify-between bg-gray-900 text-white py-4 px-6 md:px-8 shadow-lg relative">
-        <Link to="/" className="text-3xl md:text-4xl font-extrabold text-gray-300">VroomBoom</Link>
-        
-        {/* Hamburger Menu button */}
-        <div
-          className="md:hidden text-white bg-gray-600 focus:outline-none"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <X size={30} /> : <Menu size={30} />}
-        </div>
-
-        {/* Navbar Links */}
-        <nav
-          className={`absolute md:static top-17 left-0 w-full md:w-auto bg-gray-800 md:bg-transparent flex flex-col md:flex-row items-center md:gap-6 text-lg font-extrabold transition-all duration-300 ease-in-out ${menuOpen ? "flex" : "hidden"} md:flex`}
-        >
-          <Link to="/about">About</Link>
-          <Link to="/marketplace">Marketplace</Link>
-          <Link to="/testimonials">Testimonials</Link>
-          <Link to="/contact">Contact Us</Link>
-        </nav>
-      </header>
+      <header className="flex items-center justify-between bg-gray-900 text-white py-4 px-6 md:px-8 shadow-lg relative z-50">
+                  <Link to="/" className="text-3xl md:text-4xl font-extrabold text-gray-300">VroomBoom</Link>
+                    
+                    {/* Hamburger Menu button */}
+                    <div
+                      className="md:hidden text-white bg-gray-600 focus:outline-none"
+                      onClick={() => setMenuOpen(!menuOpen)}
+                    >
+                      {menuOpen ? <X size={30} /> : <Menu size={30} />}
+                    </div>
+            
+                    {/* Navbar Links */}
+                    <nav
+              className={`absolute md:static top-full py-4 left-0 w-full md:w-auto bg-gray-800 md:bg-transparent flex flex-col md:flex-row items-center md:gap-6 text-lg font-extrabold transition-all duration-300 ease-in-out z-50 ${menuOpen ? "flex" : "hidden"} md:flex`}
+            >
+            
+                      <Link to="/about">About</Link>
+                      <Link to="/marketplace">Marketplace</Link>
+                      <Link to="/testimonials">Testimonials</Link>
+                      <Link to="/contact">Contact Us</Link>
+                    </nav>
+                  </header>
 
       {/* Main Content */}
 
