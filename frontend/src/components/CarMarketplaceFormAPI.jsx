@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
-import { getDictionary, addEntry } from "./LocalStorageHelper";
+import { getDictionary, addEntry } from "./APICallHelper";
 
-const CarMarketplaceForm = () => {
+const CarMarketplaceFormAPI = () => {
     const [carName, setCarName] = useState("");
     const [price, setPrice] = useState("");
     const [shortDescription, setShortDescription] = useState("");
     const [longDescription, setLongDescription] = useState("");
-    const [dictionary, setDictionary] = useState(getDictionary());
+    const [dictionary, setDictionary] = useState({});
 
-    // Sync dictionary state with localStorage on mount
+    // Fetch dictionary from API on mount
     useEffect(() => {
-        setDictionary(getDictionary());
+        const fetchData = async () => {
+            const data = await getDictionary();
+            setDictionary(data);
+        };
+        fetchData();
     }, []);
 
-    // Add form data to the dictionary using carName as the key
-    const handleAdd = () => {
+    const handleAdd = async () => {
         if (!carName.trim()) {
             console.log("Car name is required!");
             return;
@@ -26,15 +29,16 @@ const CarMarketplaceForm = () => {
             longDescription
         };
 
-        addEntry(carName, carData);
-        setDictionary(getDictionary()); // Update state
+        await addEntry(carName, carData);
+
+        // Refresh dictionary from API after adding
+        const updatedData = await getDictionary();
+        setDictionary(updatedData);
     };
 
-
-    // Redirect after submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        handleAdd();
+        await handleAdd();
         window.location.href = "/marketplace";
     };
 
@@ -89,7 +93,9 @@ const CarMarketplaceForm = () => {
                         required
                     ></textarea>
                 </div>
-                <button type="button" onClick={handleAdd} className="w-full py-2 rounded-md">Add to Marketplace</button>
+                <button type="button" onClick={handleAdd} className="w-full py-2 rounded-md">
+                    Add to Marketplace
+                </button>
             </form>
 
             {/* Display Dictionary */}
@@ -101,4 +107,4 @@ const CarMarketplaceForm = () => {
     );
 };
 
-export default CarMarketplaceForm;
+export default CarMarketplaceFormAPI;

@@ -31,6 +31,12 @@ class Controller(private val service: CustomService) {
         return ResponseEntity.status(200).body(car)
     }
 
+    @GetMapping("/rest/cars")
+    fun getAllCars(): ResponseEntity<*> {
+        val cars = service.getCars()
+        return ResponseEntity.ok(cars)
+    }
+
     @DeleteMapping("/rest/cars/{cid}")
     fun deleteCarById(
         @PathVariable cid: String
